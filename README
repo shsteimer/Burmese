@@ -1,0 +1,1 @@
+Burmese is a content repository modeled loosely on the JCR standard and implemented in python using Mongo DB as it's persistence layer.
