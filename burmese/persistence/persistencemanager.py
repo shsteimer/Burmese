@@ -7,7 +7,7 @@ class PersistenceManager(object):
 		 self._db = connection[repositoryId]
 		 self._nodes = self._db.nodes
 		 self._nodes.ensureIndex({"path":1,"active":1}{"unique":true});
-		 self._nodes.ensureIndex("children");
+		 self._nodes.ensureIndex("parentId");
 
 	def getNodeByPath(self,path):
 		self._nodes.ensureIndex("path")
@@ -46,7 +46,6 @@ def convertNodeToBSON(node):
 			"parentId":node.parentId}
 	
 	nodeBSON.update(node.attributes)
-	nodeBSON['children']=node._children
 	nodeBSON['content']=node.content
 	return nodeBSON
 
